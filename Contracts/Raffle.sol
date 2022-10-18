@@ -14,28 +14,34 @@ in the VRFConsumerBaseV2 function we need to pass the vrf coordinator parameter
  */
 
 error Raffle__InsufficientFunds();
+error Raffle__TransactionFailure();
 
 
 contract Raffle is VRFConsumerBaseV2{ 
 
  /**importing the interfaces */
-VRFCoordinatorV2Interface  privare immutable i_vrfCoordinator;
+VRFCoordinatorV2Interface  private immutable i_vrfCoordinator;
 bytes32 private immutable i_gaslane;
 uint64 private immutable i_subscription_id;
-uint32 private immutable i_ callbackGasLimit;
+uint32 private immutable i_callbackGasLimit;
 uint16 private constant REQUEST_CONFIRMATION = 3;
 uint32 private constant NUM_WORDS=1;
 //state variables 
 uint256 private immutable i_entrancefee; //immutable variable
 address payable[]  private s_players;// storage variables
+address private s_mostRecentWinner;
+
+//lottery variable
+
 
 
   constructor( address vrfCoordinator ,uint256 entranceFee, bytes32 gasLane,uint64 subscription_id, uint32  callbackGasLimit )VRFConsumerBaseV2(vrfCoordinator) {
     i_entrancefee=entranceFee;
     /**only settiing vrfCoordinator  one time inside the condtructor*/
     i_vrfCoordinator=VRFCoordinatorV2Interface(vrfCoordinator);
-    i_gaslane = gaslane;
-    i_callbackGasLimit= callbackGasLimit
+    i_gaslane = gasLane;
+    i_callbackGasLimit= callbackGasLimit;
+    i_subscription_id=subscription_id;
 
 
 }
@@ -80,9 +86,9 @@ function requestRandomNumber()external{
         i_gaslane,
         i_subscription_id,
         REQUEST_CONFIRMATION,
-        callbackGasLimit,
+        i_callbackGasLimit,
         NUM_WORDS
-      )
+      );
 
 emit RequestRaffleWinner(requestId);
 
@@ -94,6 +100,14 @@ emit RequestRaffleWinner(requestId);
 // because then it can be brute forced and manupulated by calling it and hence it will be unfair
 //this function only request the random number
 // in another function we will be getting and processing it
+
+
+
+/** Picking a radom winner and implementing chainlink vrf
+using modulo operater
+here in this we will returned a random word array but as we are returning only one word the array will of size 1
+
+ */
 
 function pickRandomNumber() external{
 
@@ -127,9 +141,18 @@ an f get logs call can be made whenever we are connecting to a node to get the l
 */
 
 
-function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal override{
-    /**  actually requesting a random word and hence callingl the function which we need to call form the coordinator contract*/
+event winnerPicked( address indexed winner);
 
+function fulfillRandomWords(uint256 /*requestId*/, uint256[] memory randomWords) internal override{
+ uint256 indexOfWinner = randomWords[0] % s_players.length;
+address payable recentWinner = s_players[indexOfWinner];
+s_mostRecentWinner = recentWinner;
+(bool success, )= recentWinner.call{value:address(this).balance}(" ");
+if(!success ){
+    revert Raffle__TransactionFailure();
+}
+/**  actually requesting a random word and hence callingl the function which we need to call form the coordinator contract*/
+emit winnerPicked(recentWinner);
 
 }
 
@@ -139,6 +162,10 @@ function getPlayers( uint256 index) public view  returns (address){
 
 
 
+}
+
+function getRecentWinner ()public view returns (address){
+    return s_mostRecentWinner;
 }
 
 }
