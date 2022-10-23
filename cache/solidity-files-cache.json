@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\SNEHA MANDAL\\OneDrive\\Desktop\\blockchain-lottery project\\Contracts\\Raffle.sol": {
-      "lastModificationDate": 1666122161695,
-      "contentHash": "2c10ec3dc9314817c652cd7ce9da2959",
+      "lastModificationDate": 1666542336432,
+      "contentHash": "16fd7ad35927f55c800cd510374cfcd3",
       "sourceName": "Contracts/Raffle.sol",
       "solcConfig": {
         "version": "0.8.7",
@@ -37,7 +37,8 @@
       },
       "imports": [
         "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol",
-        "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol"
+        "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol",
+        "@chainlink/contracts/src/v0.8/AutomationCompatible.sol"
       ],
       "versionPragmas": [
         "^0.8.7"
@@ -128,6 +129,135 @@
       ],
       "artifacts": [
         "VRFCoordinatorV2Interface"
+      ]
+    },
+    "C:\\Users\\SNEHA MANDAL\\OneDrive\\Desktop\\blockchain-lottery project\\node_modules\\@chainlink\\contracts\\src\\v0.8\\AutomationCompatible.sol": {
+      "lastModificationDate": 1665927786814,
+      "contentHash": "c962c53a75d722542c83859d848edd5b",
+      "sourceName": "@chainlink/contracts/src/v0.8/AutomationCompatible.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./AutomationBase.sol",
+        "./interfaces/AutomationCompatibleInterface.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AutomationCompatible"
+      ]
+    },
+    "C:\\Users\\SNEHA MANDAL\\OneDrive\\Desktop\\blockchain-lottery project\\node_modules\\@chainlink\\contracts\\src\\v0.8\\AutomationBase.sol": {
+      "lastModificationDate": 1665927786813,
+      "contentHash": "80067f44d8bddd615599f8d73b9726a5",
+      "sourceName": "@chainlink/contracts/src/v0.8/AutomationBase.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AutomationBase"
+      ]
+    },
+    "C:\\Users\\SNEHA MANDAL\\OneDrive\\Desktop\\blockchain-lottery project\\node_modules\\@chainlink\\contracts\\src\\v0.8\\interfaces\\AutomationCompatibleInterface.sol": {
+      "lastModificationDate": 1665927787198,
+      "contentHash": "c52969cee392918edbf23f914e01c0dc",
+      "sourceName": "@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AutomationCompatibleInterface"
       ]
     }
   }
