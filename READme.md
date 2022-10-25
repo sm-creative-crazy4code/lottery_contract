@@ -1,6 +1,6 @@
 ### ABOUT PROJECT
 
-Thid project s the backend of a decentralized lottery app smart contract connect to a front end cereated using html ,css,js,bootstap
+Thid project s the backend of a decentralized lottery app smart contract connect to a front end created using html ,css,js,bootstap
 More than one kind of wallet provider can be connected.
 here players are allowed to fund there lottery smart contract with ethers
 

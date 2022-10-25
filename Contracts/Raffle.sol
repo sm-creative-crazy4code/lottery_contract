@@ -181,6 +181,8 @@ an f get logs call can be made whenever we are connecting to a node to get the l
   }
 
   event RequestRaffleWinner(uint256 indexed requestId);
+  /** @dev when check upkeep returns true perform upkeep is automatically called
+   */
 
   function performUpkeep(
     bytes calldata /* performData */
