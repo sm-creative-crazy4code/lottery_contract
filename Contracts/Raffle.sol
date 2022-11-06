@@ -79,10 +79,7 @@ in the VRFConsumerBaseV2 function we need to pass the vrf coordinator parameter
     i_interval = interval;
   }
 
-  function getEntrancefee() public view returns (uint256) {
-    return i_entrancefee;
-  }
-
+  
   event RaffleEnter(address indexed player);
 
   function enterRaffle() public payable {
@@ -228,6 +225,13 @@ an f get logs call can be made whenever we are connecting to a node to get the l
     emit winnerPicked(recentWinner);
   }
 
+
+  function getEntrancefee() public view returns (uint256) {
+    return i_entrancefee;
+  }
+
+
+
   function getPlayers(uint256 index) public view returns (address) {
     return s_players[index];
   }
@@ -265,6 +269,12 @@ function getRquestCofirmation()public pure returns( uint256){
     return REQUEST_CONFIRMATION ;
 
 
+}
+
+
+function getInterval() public view returns ( uint256){ 
+
+  return i_interval;
 }
 
 //lottery

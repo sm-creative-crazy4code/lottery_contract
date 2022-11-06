@@ -29,14 +29,20 @@ rinkeby:{
   accounts:[PRIVATE_KEY],
 },
 goreli:{
-  chainId:57,
+  chainId:5,
   blockConfirmations:3,
-  url:GORELI_URL,
+  url:GOERLI_URL,
   accounts:[PRIVATE_KEY],
 }
  },
 
   solidity: "0.8.7",
+  gasReporters:{
+
+    enabled: false,
+    outputFile:"gasReport.txt",
+    noColors: true,
+    },
 
   namedAccounts:{
     deployer:{

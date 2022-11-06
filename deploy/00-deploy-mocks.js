@@ -33,7 +33,7 @@ const chainId= network.config.chainId
 const args=[BASE_FEE,GAS_PRICE_LINK]
 
 if(developmentChains.includes(network.name)){
-
++
     log("local network detected .... deploying mocks")
     // deploy the mock of vrf coordinator...
 
